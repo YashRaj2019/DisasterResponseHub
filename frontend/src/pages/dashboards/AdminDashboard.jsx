@@ -82,33 +82,33 @@ const AdminDashboard = () => {
           onAssigned={fetchEmergencies}
         />
       )}
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Command Center</h1>
-        <div className="flex items-center space-x-3">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">Admin Command Center</h1>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
           <button 
             onClick={fetchEmergencies}
-            className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm text-sm"
+            className="flex-1 sm:flex-none bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-primary/30 active:scale-95"
           >
-            Refresh Data
+            Refresh Grid
           </button>
         </div>
       </div>
 
       {/* Top Stats Row */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
         {[
-          { title: 'Active Emergencies', value: activeEmergenciesCount, icon: <AlertTriangle className="h-6 w-6 text-emergency-red" />, bg: 'bg-emergency-red/10' },
-          { title: 'Volunteers Active', value: '45', icon: <Users className="h-6 w-6 text-primary" />, bg: 'bg-primary/10' },
-          { title: 'Shelters Available', value: '12', icon: <ShieldAlert className="h-6 w-6 text-emerald-500" />, bg: 'bg-emerald-500/10' },
-          { title: 'Total Incidents', value: emergencies.length, icon: <Activity className="h-6 w-6 text-emergency-orange" />, bg: 'bg-emergency-orange/10' },
+          { title: 'Active', value: activeEmergenciesCount, icon: <AlertTriangle className="h-5 w-5 sm:h-6 sm:h-6 text-emergency-red" />, bg: 'bg-emergency-red/10' },
+          { title: 'Volunteers', value: '45', icon: <Users className="h-5 w-5 sm:h-6 sm:h-6 text-primary" />, bg: 'bg-primary/10' },
+          { title: 'Shelters', value: '12', icon: <ShieldAlert className="h-5 w-5 sm:h-6 sm:h-6 text-emerald-500" />, bg: 'bg-emerald-500/10' },
+          { title: 'Total', value: emergencies.length, icon: <Activity className="h-5 w-5 sm:h-6 sm:h-6 text-emergency-orange" />, bg: 'bg-emergency-orange/10' },
         ].map((stat, i) => (
-          <div key={i} className="bg-white dark:bg-dark-800 rounded-2xl p-6 border border-slate-200 dark:border-dark-700 shadow-sm flex items-center">
-            <div className={`${stat.bg} p-3 rounded-xl mr-4`}>
+          <div key={i} className="bg-white dark:bg-dark-800 rounded-2xl p-4 sm:p-6 border border-slate-200 dark:border-dark-700 shadow-sm flex items-center">
+            <div className={`${stat.bg} p-2 sm:p-3 rounded-xl mr-3 sm:mr-4 shrink-0`}>
               {stat.icon}
             </div>
-            <div>
-              <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{stat.title}</p>
-              <p className="text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</p>
+            <div className="min-w-0">
+              <p className="text-[10px] sm:text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest truncate">{stat.title}</p>
+              <p className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-none">{stat.value}</p>
             </div>
           </div>
         ))}

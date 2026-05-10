@@ -235,34 +235,34 @@ const DashboardLayout = ({ children }) => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Header */}
-        <header className="h-20 bg-white dark:bg-dark-800 border-b border-slate-200 dark:border-dark-700 flex items-center justify-between px-6 lg:justify-end shrink-0">
+        <header className="h-16 sm:h-20 bg-white dark:bg-dark-800 border-b border-slate-200 dark:border-dark-700 flex items-center justify-between px-4 sm:px-6 lg:justify-end shrink-0">
           <button 
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white"
+            className="lg:hidden text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white p-2"
           >
             <Menu className="h-6 w-6" />
           </button>
           
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-3 sm:space-x-6">
             <button 
               onClick={() => setIsCrisisMode(!isCrisisMode)}
-              className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-xl border-2 transition-all font-black text-[10px] uppercase tracking-widest ${
+              className={`hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl border-2 transition-all font-black text-[10px] uppercase tracking-widest ${
                 isCrisisMode 
                 ? 'bg-red-600 border-red-500 text-white shadow-[0_0_20px_rgba(220,38,38,0.5)]' 
                 : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-500 hover:border-red-500/50 hover:text-red-500'
               }`}
             >
               <Siren className={`h-4 w-4 ${isCrisisMode ? 'animate-bounce' : ''}`} />
-              {isCrisisMode ? 'Crisis Mode: Active' : 'Emergency Simulation'}
+              {isCrisisMode ? 'Crisis Active' : 'Simulation'}
             </button>
 
-            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+            <span className={`inline-flex items-center px-3 py-1 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest transition-colors ${
               isCrisisMode 
               ? 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400' 
               : 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400'
             }`}>
               <span className={`w-2 h-2 rounded-full mr-2 animate-pulse ${isCrisisMode ? 'bg-red-500' : 'bg-emerald-500'}`}></span>
-              {isCrisisMode ? 'Crisis Active' : 'System Online'}
+              {isCrisisMode ? 'Crisis' : 'Online'}
             </span>
           </div>
         </header>
@@ -288,16 +288,16 @@ const DashboardLayout = ({ children }) => {
         </AnimatePresence>
 
         {/* Global Situation Ticker */}
-        <div className={`text-white h-10 flex items-center overflow-hidden border-b border-white/5 relative z-10 shrink-0 transition-colors duration-500 ${isCrisisMode ? 'bg-red-950' : 'bg-slate-900'}`}>
-           <div className="bg-primary px-4 h-full flex items-center gap-2 z-20 shadow-[10px_0_20px_rgba(0,0,0,0.5)]">
-              <Zap className="h-4 w-4 text-white animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-widest">Live Updates</span>
+        <div className={`text-white h-8 sm:h-10 flex items-center overflow-hidden border-b border-white/5 relative z-10 shrink-0 transition-colors duration-500 ${isCrisisMode ? 'bg-red-950' : 'bg-slate-900'}`}>
+           <div className="bg-primary px-3 sm:px-4 h-full flex items-center gap-2 z-20 shadow-[10px_0_20px_rgba(0,0,0,0.5)]">
+              <Zap className="h-3 w-3 sm:h-4 sm:h-4 text-white animate-pulse" />
+              <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-widest">Live Updates</span>
            </div>
            <div className="flex-1 whitespace-nowrap relative overflow-hidden">
               <motion.div 
                 animate={{ x: [0, -1500] }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                className="flex items-center gap-16 px-8 text-[11px] font-bold tracking-wide"
+                className="flex items-center gap-12 sm:gap-16 px-8 text-[9px] sm:text-[11px] font-bold tracking-wide"
               >
                  <span className="flex items-center gap-2">⚠️ <span className="text-orange-400">ALERT:</span> Severe Monsoon warning issued for Coastal Kerala... [ETA: 4h]</span>
                  <span className="flex items-center gap-2">✅ <span className="text-emerald-400">RESOLVED:</span> Flash flood rescue mission in Sector 4 successfully closed.</span>
@@ -306,7 +306,6 @@ const DashboardLayout = ({ children }) => {
                  <span className="flex items-center gap-2">📡 <span className="text-slate-400">SYSTEM:</span> AI Analysis complete for Northeast Seismic Zone – No critical threats.</span>
                  {/* Duplicated for seamless loop */}
                  <span className="flex items-center gap-2">⚠️ <span className="text-orange-400">ALERT:</span> Severe Monsoon warning issued for Coastal Kerala... [ETA: 4h]</span>
-                 <span className="flex items-center gap-2">✅ <span className="text-emerald-400">RESOLVED:</span> Flash flood rescue mission in Sector 4 successfully closed.</span>
               </motion.div>
            </div>
         </div>

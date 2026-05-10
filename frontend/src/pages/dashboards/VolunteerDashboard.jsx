@@ -67,28 +67,40 @@ const VolunteerDashboard = () => {
       {/* ── COMMAND HUB HERO ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden rounded-[2.5rem] bg-slate-900 text-white shadow-2xl shadow-blue-500/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.2),transparent)]"></div>
-        <div className="absolute top-0 right-0 p-8 flex gap-4">
-           <div className="hidden md:flex flex-col items-end">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Response Network</span>
-              <span className="text-xl font-black">ACTIVE GRID</span>
-           </div>
-           <div className="w-px h-10 bg-white/10 hidden md:block"></div>
-           <button 
-             onClick={() => setIsOnDuty(!isOnDuty)}
-             className={`flex items-center gap-3 px-6 py-3 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] border-2 ${isOnDuty ? 'bg-emerald-500/10 border-emerald-500 text-emerald-400 shadow-lg shadow-emerald-500/20' : 'bg-slate-800 border-slate-700 text-slate-400'}`}
-           >
-             <div className={`w-2 h-2 rounded-full ${isOnDuty ? 'bg-emerald-500 animate-pulse' : 'bg-slate-600'}`}></div>
-             {isOnDuty ? 'On Duty' : 'Off Duty'}
-           </button>
+        
+        {/* Header Controls */}
+        <div className="p-6 sm:p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 relative z-20">
+          <div className="flex items-center gap-4">
+             <div className="p-3 bg-blue-500 rounded-2xl shadow-lg shadow-blue-500/30 shrink-0">
+                <Shield className="h-5 w-5 sm:h-6 sm:h-6 text-white" />
+             </div>
+             <div>
+                <h1 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tighter">Responder Command Hub</h1>
+                <div className="md:hidden flex items-center gap-2 mt-1">
+                   <span className="text-[8px] font-black uppercase tracking-widest text-blue-400">Tactical Node</span>
+                   <div className="w-1 h-1 bg-blue-400 rounded-full"></div>
+                   <span className="text-[8px] font-black uppercase tracking-widest text-blue-400">Live</span>
+                </div>
+             </div>
+          </div>
+
+          <div className="flex items-center gap-4 w-full sm:w-auto">
+             <div className="hidden lg:flex flex-col items-end">
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">Response Network</span>
+                <span className="text-xl font-black">ACTIVE GRID</span>
+             </div>
+             <div className="w-px h-10 bg-white/10 hidden lg:block"></div>
+             <button 
+               onClick={() => setIsOnDuty(!isOnDuty)}
+               className={`flex-1 sm:flex-none flex items-center justify-center gap-3 px-4 sm:px-6 py-3 rounded-2xl transition-all font-black uppercase tracking-widest text-[10px] border-2 ${isOnDuty ? 'bg-emerald-500/10 border-emerald-500 text-emerald-400 shadow-lg shadow-emerald-500/20' : 'bg-slate-800 border-slate-700 text-slate-400'}`}
+             >
+               <div className={`w-2 h-2 rounded-full ${isOnDuty ? 'bg-emerald-500 animate-pulse' : 'bg-slate-600'}`}></div>
+               {isOnDuty ? 'On Duty' : 'Off Duty'}
+             </button>
+          </div>
         </div>
 
-        <div className="p-8 md:p-12 relative z-10">
-          <div className="flex items-center gap-4 mb-6">
-             <div className="p-3 bg-blue-500 rounded-2xl shadow-lg shadow-blue-500/30">
-                <Shield className="h-6 w-6 text-white" />
-             </div>
-             <h1 className="text-3xl md:text-5xl font-black tracking-tighter">Responder Command Hub</h1>
-          </div>
+        <div className="px-6 pb-8 sm:px-12 sm:pb-12 relative z-10">
           <p className="text-slate-400 max-w-xl text-lg font-medium mb-10 leading-relaxed">
              Monitor live incidents, manage assignments, and coordinate with the DisasterResponseHub network in real-time.
           </p>

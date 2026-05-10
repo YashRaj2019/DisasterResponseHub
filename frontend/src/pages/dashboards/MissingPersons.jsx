@@ -517,14 +517,14 @@ const MissingPersons = () => {
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Missing Persons Database</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium text-lg tracking-tight">Cross-referenced registry for disaster-separated families.</p>
+          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">Missing Persons Database</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium text-sm sm:text-lg tracking-tight">Cross-referenced registry for disaster-separated families.</p>
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-red-600 hover:bg-red-700 text-white font-black py-4 px-8 rounded-[2rem] transition-all shadow-xl shadow-red-500/20 flex items-center gap-2 hover:-translate-y-1 active:scale-95"
+          className="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-black py-4 px-8 rounded-2xl sm:rounded-[2rem] transition-all shadow-xl shadow-red-500/20 flex items-center justify-center gap-2 hover:-translate-y-1 active:scale-95"
         >
           <UserPlus className="h-5 w-5" /> Report Missing
         </button>

@@ -349,37 +349,37 @@ const CitizenDashboard = () => {
         )}
       </AnimatePresence>
 
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Citizen Command Center</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium text-lg">Monitor your active requests and nearby safety infrastructure.</p>
+          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">Citizen Command Center</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium text-sm sm:text-lg">Monitor your active requests and safety infrastructure.</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        <div className="xl:col-span-2 space-y-8">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
+        <div className="xl:col-span-2 space-y-6 sm:space-y-8">
           
           {/* Main Action Area */}
-          <div className="bg-gradient-to-br from-slate-900 to-[#0a0f1c] rounded-[2rem] p-8 md:p-12 border border-slate-800 shadow-2xl relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-slate-900 to-[#0a0f1c] rounded-[2rem] p-6 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden group">
             <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[150%] bg-gradient-to-l from-red-600/20 to-transparent transform rotate-12 blur-[100px] pointer-events-none group-hover:from-red-600/30 transition-all duration-700"></div>
-            <div className="absolute top-10 right-10 opacity-10 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-700">
+            <div className="absolute top-10 right-10 opacity-10 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-700 hidden sm:block">
               <ShieldAlert className="w-48 h-48 text-red-500" />
             </div>
             
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-500/10 border border-red-500/20 text-red-400 rounded-full text-xs font-black tracking-widest uppercase mb-6 shadow-inner">
-                <Activity className="h-3.5 w-3.5" /> Priority Access
+            <div className="relative z-10 text-center sm:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-500/10 border border-red-500/20 text-red-400 rounded-full text-[10px] font-black tracking-widest uppercase mb-4 sm:mb-6 shadow-inner">
+                <Activity className="h-3 w-3" /> Priority Access
               </div>
-              <h2 className="text-5xl font-black mb-4 text-white tracking-tight leading-none">Need Immediate Help?</h2>
-              <p className="text-slate-300 mb-10 max-w-xl text-lg leading-relaxed font-medium">
-                Report an emergency to instantly alert nearby volunteer response forces and central headquarters. Medical facilities and rescue units will be dispatched.
+              <h2 className="text-3xl sm:text-5xl font-black mb-4 text-white tracking-tight leading-none">Need Immediate Help?</h2>
+              <p className="text-slate-300 mb-8 sm:mb-10 max-w-xl text-sm sm:text-lg leading-relaxed font-medium">
+                Report an emergency to instantly alert nearby volunteer response forces and central headquarters.
               </p>
               
               <button 
                 onClick={() => setIsModalOpen(true)}
-                className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-[0_0_40px_rgba(220,38,38,0.4)] flex items-center text-lg active:scale-95 duration-200 border border-red-400/50 hover:shadow-[0_0_60px_rgba(220,38,38,0.6)]"
+                className="w-full sm:w-auto bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-black py-4 px-8 rounded-2xl transition-all shadow-[0_0_40px_rgba(220,38,38,0.4)] flex items-center justify-center text-base sm:text-lg active:scale-95 duration-200 border border-red-400/50 hover:shadow-[0_0_60px_rgba(220,38,38,0.6)]"
               >
-                <Siren className="mr-3 h-7 w-7 animate-pulse" />
+                <Siren className="mr-3 h-6 w-6 sm:h-7 sm:h-7 animate-pulse" />
                 Report Emergency Now
               </button>
             </div>

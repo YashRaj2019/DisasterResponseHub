@@ -202,33 +202,34 @@ export default function LiveMap() {
     <div className="flex flex-col h-[calc(100vh-64px)] bg-slate-900 text-white overflow-hidden">
 
       {/* ── Stats Bar ─────────────────────────────────────────────────────── */}
-      <div className="flex gap-3 p-3 bg-slate-800 border-b border-slate-700 shrink-0">
-        {[
-          { label:'Total Events',    value: stats.total,    color:'text-blue-400',   bg:'bg-blue-500/10'  },
-          { label:'Critical',        value: stats.critical, color:'text-red-400',    bg:'bg-red-500/10'   },
-          { label:'Shelters Active', value: stats.shelters, color:'text-green-400',  bg:'bg-green-500/10' },
-          { label:'Earthquakes',     value: stats.quakes,   color:'text-orange-400', bg:'bg-orange-500/10'},
-        ].map(s => (
-          <div key={s.label} className={`flex-1 ${s.bg} rounded-xl px-3 py-2 flex items-center gap-2`}>
-            <div>
-              <p className={`text-xl font-bold ${s.color}`}>{s.value}</p>
-              <p className="text-xs text-slate-400">{s.label}</p>
+      <div className="flex flex-col sm:flex-row gap-3 p-3 bg-slate-800 border-b border-slate-700 shrink-0">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 flex-1">
+          {[
+            { label:'Total Events',    value: stats.total,    color:'text-blue-400',   bg:'bg-blue-500/10'  },
+            { label:'Critical',        value: stats.critical, color:'text-red-400',    bg:'bg-red-500/10'   },
+            { label:'Shelters Active', value: stats.shelters, color:'text-green-400',  bg:'bg-green-500/10' },
+            { label:'Earthquakes',     value: stats.quakes,   color:'text-orange-400', bg:'bg-orange-500/10'},
+          ].map(s => (
+            <div key={s.label} className={`${s.bg} rounded-xl px-3 py-2 flex items-center gap-2`}>
+              <div>
+                <p className={`text-lg sm:text-xl font-bold ${s.color} leading-none mb-1`}>{s.value}</p>
+                <p className="text-[9px] sm:text-xs text-slate-400 uppercase tracking-widest">{s.label}</p>
+              </div>
             </div>
+          ))}
+        </div>
+        <div className="flex items-center justify-between sm:justify-end gap-3 sm:ml-auto pt-2 sm:pt-0 border-t sm:border-0 border-slate-700">
+          <div className="flex flex-col items-start sm:items-end sm:mr-4">
+             <p className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-400 leading-none mb-1">Tactical Grid</p>
+             {lastUpdated && (
+               <span className="text-[10px] text-slate-500 flex items-center gap-1">
+                 <Clock size={10}/> {lastUpdated.toLocaleTimeString()}
+               </span>
+             )}
           </div>
-        ))}
-        <div className="flex items-center gap-2 ml-auto">
-          <div className="hidden md:flex flex-col items-end mr-4">
-             <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400 leading-none mb-1">Tactical Grid</p>
-             <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest leading-none">Status: Operational</p>
-          </div>
-          {lastUpdated && (
-            <span className="text-xs text-slate-500 flex items-center gap-1">
-              <Clock size={12}/> {lastUpdated.toLocaleTimeString()}
-            </span>
-          )}
           <button onClick={fetchAll} disabled={loading}
-            className="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 px-3 py-2 rounded-lg text-xs font-black transition-colors disabled:opacity-50 shadow-lg shadow-blue-600/20 uppercase tracking-widest">
-            <RefreshCw size={13} className={loading ? 'animate-spin' : ''}/> Sync
+            className="flex items-center gap-1 bg-blue-600 hover:bg-blue-500 px-3 py-2 rounded-lg text-[10px] font-black transition-colors disabled:opacity-50 shadow-lg shadow-blue-600/20 uppercase tracking-widest">
+            <RefreshCw size={12} className={loading ? 'animate-spin' : ''}/> Sync
           </button>
         </div>
       </div>
@@ -238,7 +239,12 @@ export default function LiveMap() {
 
         {/* Left Panel */}
         {showPanel && (
-          <div className="w-72 bg-slate-800 border-r border-slate-700 flex flex-col overflow-hidden shrink-0">
+          <div className="absolute inset-0 sm:relative sm:inset-auto z-[1050] sm:z-auto w-full sm:w-72 bg-slate-800 border-r border-slate-700 flex flex-col overflow-hidden shrink-0">
+            {/* Mobile Header */}
+            <div className="sm:hidden flex items-center justify-between p-4 bg-slate-900 border-b border-slate-700">
+               <h3 className="font-black text-blue-400 uppercase tracking-widest text-xs">Tactical Intelligence</h3>
+               <button onClick={() => setShowPanel(false)} className="p-2 bg-slate-800 rounded-lg"><X size={16} /></button>
+            </div>
 
             {/* Layer Filters */}
             <div className="p-3 border-b border-slate-700">
@@ -331,7 +337,7 @@ export default function LiveMap() {
           </button>
 
           {/* Legend */}
-          <div className="absolute bottom-6 right-3 z-[1000] bg-slate-800/90 backdrop-blur border border-slate-700 rounded-xl p-3 text-xs max-w-[160px]">
+          <div className="absolute bottom-6 right-3 z-[1000] bg-slate-800/90 backdrop-blur border border-slate-700 rounded-xl p-3 text-[10px] sm:text-xs max-w-[120px] sm:max-w-[160px] hidden sm:block">
             <p className="font-bold text-slate-300 mb-2">Legend</p>
             {Object.entries(TYPE_META).map(([k,m]) => (
               <div key={k} className="flex items-center gap-1.5 mb-1">
@@ -339,19 +345,11 @@ export default function LiveMap() {
                 <span className="text-slate-400">{m.label}</span>
               </div>
             ))}
-            <hr className="border-slate-700 my-2"/>
-            <p className="font-bold text-slate-300 mb-1">Risk Zones</p>
-            {[['earthquake','#ef4444'],['flood','#3b82f6'],['cyclone','#8b5cf6'],['landslide','#f59e0b']].map(([t,c]) => (
-              <div key={t} className="flex items-center gap-1.5 mb-1">
-                <span style={{ color: c }} className="text-base leading-none">◌</span>
-                <span className="text-slate-400 capitalize">{t}</span>
-              </div>
-            ))}
           </div>
 
           {/* Selected event detail card */}
           {selected && (
-            <div className="absolute top-3 right-3 z-[1000] w-64 bg-slate-800/95 backdrop-blur border border-slate-600 rounded-xl p-4 shadow-2xl">
+            <div className="absolute top-3 left-3 right-3 sm:left-auto sm:right-3 z-[1010] w-auto sm:w-64 bg-slate-800/95 backdrop-blur border border-slate-600 rounded-xl p-4 shadow-2xl">
               <button onClick={() => setSelected(null)} className="absolute top-2 right-2 text-slate-400 hover:text-white"><X size={14}/></button>
               <div className="flex items-center gap-2 mb-2">
                 <span style={{ color: (TYPE_META[selected.type]||TYPE_META.emergency).color }} className="text-lg">●</span>
@@ -363,8 +361,8 @@ export default function LiveMap() {
               {selected.place  && <p className="text-xs text-slate-400 mb-1">{selected.place}</p>}
               {selected.severity && <p className="text-xs text-slate-400 mb-1">Severity: {selected.severity}</p>}
               {selected.capacity && <p className="text-xs text-green-400 mb-1">Capacity: {selected.available}/{selected.capacity}</p>}
-              <p className="text-xs text-slate-500 flex items-center gap-1"><Clock size={10}/> {selected.time}</p>
-              <p className="text-xs text-blue-400 mt-1 flex items-center gap-1"><Info size={10}/> Source: {selected.source}</p>
+              <p className="text-[10px] text-slate-500 flex items-center gap-1"><Clock size={10}/> {selected.time}</p>
+              <p className="text-[10px] text-blue-400 mt-1 flex items-center gap-1"><Info size={10}/> Source: {selected.source}</p>
             </div>
           )}
 

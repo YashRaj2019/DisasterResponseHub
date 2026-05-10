@@ -5,16 +5,16 @@ import { motion } from 'framer-motion';
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-dark-900 text-slate-900 dark:text-slate-100 transition-colors">
-      <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto">
+      <nav className="flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6 max-w-7xl mx-auto space-y-4 sm:space-y-0">
         <div className="flex items-center space-x-2">
-          <ShieldAlert className="h-8 w-8 text-emergency-red" />
-          <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emergency-red to-orange-500 tracking-tighter">
+          <ShieldAlert className="h-6 w-6 sm:h-8 sm:h-8 text-emergency-red" />
+          <span className="text-xl sm:text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-emergency-red to-orange-500 tracking-tighter">
             DisasterResponseHub
           </span>
         </div>
-        <div className="space-x-4">
-          <Link to="/login" className="px-4 py-2 text-sm font-medium hover:text-primary transition-colors">Login</Link>
-          <Link to="/register" className="px-4 py-2 text-sm font-medium bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30">
+        <div className="flex items-center space-x-2 sm:space-x-4">
+          <Link to="/login" className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium hover:text-primary transition-colors">Login</Link>
+          <Link to="/register" className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors shadow-lg shadow-primary/30">
             Get Started
           </Link>
         </div>
@@ -26,8 +26,8 @@ const LandingPage = () => {
           Live Emergency Response System
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 relative z-10">
-          Connect. Coordinate. <br />
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-8 relative z-10">
+          Connect. Coordinate. <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Save Lives.</span>
         </h1>
         
