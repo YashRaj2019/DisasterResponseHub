@@ -1,7 +1,8 @@
 services:
   - type: web
     name: disasterlink-api
-    env: node
+    runtime: node
+    plan: free
     rootDir: backend
     buildCommand: npm install
     startCommand: npm start
@@ -11,22 +12,12 @@ services:
       - key: PORT
         value: 5000
       - key: MONGODB_URI
-        sync: false
       - key: JWT_SECRET
-        sync: false
       - key: CLOUDINARY_CLOUD_NAME
-        sync: false
       - key: CLOUDINARY_API_KEY
-        sync: false
       - key: CLOUDINARY_API_SECRET
-        sync: false
       - key: GITHUB_CLIENT_ID
-        sync: false
       - key: GITHUB_CLIENT_SECRET
-        sync: false
       - key: SESSION_SECRET
-        sync: false
       - key: CLIENT_URL
-        sync: false
       - key: BACKEND_URL
-        sync: false
