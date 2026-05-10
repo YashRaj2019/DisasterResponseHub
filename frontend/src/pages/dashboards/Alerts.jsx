@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../utils/api';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Bell, ShieldAlert, CheckCircle, Info, Loader2, Globe, 

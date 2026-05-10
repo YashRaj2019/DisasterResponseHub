@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Activity, ShieldAlert, Users, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const LandingPage = () => {
   return (
