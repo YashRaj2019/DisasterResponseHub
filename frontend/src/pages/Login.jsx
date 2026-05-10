@@ -199,7 +199,6 @@ const Login = () => {
                     {loading ? <Loader2 className="animate-spin h-6 w-6" /> : 'Request Verification Code'}
                   </button>
 
-                  </button>
                 </form>
               </motion.div>
             ) : (

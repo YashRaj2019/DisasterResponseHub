@@ -221,7 +221,6 @@ const Register = () => {
                     {loading ? <Loader2 className="animate-spin h-6 w-6" /> : 'Register & Verify'}
                   </button>
 
-                  </button>
                 </form>
               </motion.div>
             ) : (
