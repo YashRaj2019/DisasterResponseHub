@@ -1,0 +1,26 @@
+{
+  "name": "mernproject1",
+  "version": "1.0.0",
+  "description": "DisasterLink is a high-fidelity, mission-critical MERN application designed for real-time disaster management and emergency orchestration. It provides a state-of-the-art interface for citizens, field responders, and tactical commanders to coordinate life-saving operations during large-scale crises.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashRaj2019/DisasterResponseHub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashRaj2019/DisasterResponseHub/issues"
+  },
+  "homepage": "https://github.com/YashRaj2019/DisasterResponseHub#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
