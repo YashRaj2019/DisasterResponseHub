@@ -19,17 +19,4 @@ router.post('/logout', logoutUser);
 router.get('/profile', protect, getUserProfile);
 router.get('/volunteers', protect, admin, getVolunteers);
 
-// GitHub OAuth
-router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
-
-router.get(
-  '/github/callback',
-  passport.authenticate('github', { failureRedirect: `${process.env.CLIENT_URL || 'http://localhost:5173'}/login` }),
-  (req, res) => {
-    // Successful authentication, generate token and redirect
-    generateToken(res, req.user._id);
-    res.redirect(`${process.env.CLIENT_URL || 'http://localhost:5173'}/dashboard`);
-  }
-);
-
 export default router;

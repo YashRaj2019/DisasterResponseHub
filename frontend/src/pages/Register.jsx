@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../features/auth/authSlice';
-import { ShieldAlert, User, Mail, Lock, Phone, Loader2, ArrowLeft, KeyRound, Smartphone, CheckCircle2, Github } from 'lucide-react';
+import { ShieldAlert, User, Mail, Lock, Phone, Loader2, ArrowLeft, KeyRound, Smartphone, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import api from '../utils/api';
 
@@ -221,17 +221,6 @@ const Register = () => {
                     {loading ? <Loader2 className="animate-spin h-6 w-6" /> : 'Register & Verify'}
                   </button>
 
-                  <div className="md:col-span-2 relative my-4">
-                    <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200 dark:border-dark-700"></div></div>
-                    <div className="relative flex justify-center text-[10px] uppercase tracking-widest font-black"><span className="px-4 bg-white dark:bg-dark-800 text-slate-400">Tactical Registration</span></div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/github`}
-                    className="md:col-span-2 w-full bg-slate-900 hover:bg-black text-white font-black py-5 px-4 rounded-2xl transition-all shadow-xl flex justify-center items-center gap-3 active:scale-95"
-                  >
-                    <Github className="h-6 w-6" /> Sign up with GitHub
                   </button>
                 </form>
               </motion.div>

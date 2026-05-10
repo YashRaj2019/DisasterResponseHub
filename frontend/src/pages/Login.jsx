@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../features/auth/authSlice';
-import { ShieldAlert, Mail, Lock, Loader2, KeyRound, CheckCircle2, ArrowLeft, Smartphone, Github } from 'lucide-react';
+import { ShieldAlert, Mail, Lock, Loader2, KeyRound, CheckCircle2, ArrowLeft, Smartphone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import api from '../utils/api';
 
@@ -199,17 +199,6 @@ const Login = () => {
                     {loading ? <Loader2 className="animate-spin h-6 w-6" /> : 'Request Verification Code'}
                   </button>
 
-                  <div className="relative my-8">
-                    <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200 dark:border-dark-700"></div></div>
-                    <div className="relative flex justify-center text-[10px] uppercase tracking-widest font-black"><span className="px-4 bg-white dark:bg-dark-800 text-slate-400">Tactical Auth Access</span></div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => window.location.href = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/github`}
-                    className="w-full bg-slate-900 hover:bg-black text-white font-black py-5 px-4 rounded-2xl transition-all shadow-xl flex justify-center items-center gap-3 active:scale-95"
-                  >
-                    <Github className="h-6 w-6" /> Continue with GitHub
                   </button>
                 </form>
               </motion.div>
