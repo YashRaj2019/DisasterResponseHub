@@ -524,7 +524,7 @@ const MissingPersons = () => {
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="bg-red-600 hover:bg-red-50 text-white font-black py-4 px-8 rounded-[2rem] transition-all shadow-xl shadow-red-500/20 flex items-center gap-2 hover:-translate-y-1 active:scale-95"
+          className="bg-red-600 hover:bg-red-700 text-white font-black py-4 px-8 rounded-[2rem] transition-all shadow-xl shadow-red-500/20 flex items-center gap-2 hover:-translate-y-1 active:scale-95"
         >
           <UserPlus className="h-5 w-5" /> Report Missing
         </button>
@@ -616,7 +616,15 @@ const MissingPersons = () => {
         </div>
       </div>
 
-      <ReportMissingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSuccess={handleAdd} />
+      <AnimatePresence>
+        {isModalOpen && (
+          <ReportMissingModal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)} 
+            onSuccess={handleAdd} 
+          />
+        )}
+      </AnimatePresence>
       
       <AnimatePresence>
         {selectedPersonId && (
