@@ -134,7 +134,7 @@ const AICopilot = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-8rem)] flex flex-col lg:flex-row gap-6 animate-in fade-in duration-700">
+    <div className="h-[calc(100vh-4rem)] sm:h-[calc(100vh-8rem)] flex flex-col lg:flex-row gap-6 animate-in fade-in duration-700">
       
       {/* Hidden Inputs */}
       <input type="file" multiple ref={fileInputRef} onChange={handleFileChange} className="hidden" />
@@ -143,37 +143,37 @@ const AICopilot = () => {
       <div className="flex-1 flex flex-col min-w-0">
         
         <div className={`flex-1 bg-white dark:bg-[#0a0f1c] border border-slate-100 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden relative transition-all duration-500 ${
-          isMaximized ? 'fixed inset-0 lg:inset-4 z-[200] rounded-none lg:rounded-[3.5rem]' : 'rounded-[2.5rem]'
+          isMaximized ? 'fixed inset-0 lg:inset-4 z-[200] rounded-none lg:rounded-[3.5rem]' : 'rounded-none sm:rounded-[2.5rem]'
         }`}>
           
           {/* Header */}
-          <div className="p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center z-20 bg-white/80 dark:bg-[#0a0f1c]/80 backdrop-blur-md">
-            <div className="flex items-center gap-4">
+          <div className="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center z-20 bg-white/80 dark:bg-[#0a0f1c]/80 backdrop-blur-md">
+            <div className="flex items-center gap-3 sm:gap-4">
               <div className="relative">
-                <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-blue-400 shadow-xl border border-slate-800">
-                   <Bot className="h-6 w-6" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-900 rounded-xl sm:rounded-2xl flex items-center justify-center text-blue-400 shadow-xl border border-slate-800">
+                   <Bot className="h-5 w-5 sm:h-6 sm:h-6" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white dark:border-[#0a0f1c]"></div>
+                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-2 sm:border-4 border-white dark:border-[#0a0f1c]"></div>
               </div>
               <div>
-                <h2 className="text-xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-                  AI Copilot <Sparkles className="h-4 w-4 text-blue-500 animate-pulse" />
+                <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+                  AI Copilot <Sparkles className="h-3.5 w-3.5 text-blue-500 animate-pulse" />
                 </h2>
-                <div className="flex items-center gap-2 text-[10px] font-black text-emerald-500 uppercase tracking-widest">
-                  <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                  Gemini-V4 Active • Intel Processing
+                <div className="flex items-center gap-1.5 text-[8px] sm:text-[10px] font-black text-emerald-500 uppercase tracking-widest">
+                  <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                  Gemini-V4 Intel
                 </div>
               </div>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-1.5 sm:gap-2">
               <button 
                 onClick={() => setIsMaximized(!isMaximized)}
-                className={`p-2.5 rounded-xl transition-all shadow-md ${isMaximized ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-blue-500'}`}
+                className={`p-2 sm:p-2.5 rounded-lg sm:rounded-xl transition-all shadow-md ${isMaximized ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-blue-500'}`}
               >
-                {isMaximized ? <Minimize2 className="h-5 w-5" /> : <Maximize2 className="h-5 w-5" />}
+                {isMaximized ? <Minimize2 className="h-4 w-4 sm:h-5 sm:h-5" /> : <Maximize2 className="h-4 w-4 sm:h-5 sm:h-5" />}
               </button>
-              <button onClick={() => setMessages(INITIAL_MESSAGES)} className="p-2.5 bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-red-500 rounded-xl transition-all shadow-md">
-                <Trash2 className="h-5 w-5" />
+              <button onClick={() => setMessages(INITIAL_MESSAGES)} className="p-2 sm:p-2.5 bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-red-500 rounded-lg sm:rounded-xl transition-all shadow-md">
+                <Trash2 className="h-4 w-4 sm:h-5 sm:h-5" />
               </button>
             </div>
           </div>
@@ -183,19 +183,19 @@ const AICopilot = () => {
           )}
           
           {/* Chat History */}
-          <div className="flex-1 overflow-y-auto p-6 md:p-10 space-y-8 custom-scrollbar z-10 scroll-smooth bg-slate-50/30 dark:bg-transparent">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-10 space-y-6 sm:space-y-8 custom-scrollbar z-10 scroll-smooth bg-slate-50/30 dark:bg-transparent">
             {messages.map((msg) => (
               <div key={msg.id} className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
                 
-                <div className={`flex gap-3 max-w-[85%] md:max-w-[70%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className={`flex gap-2 sm:gap-3 max-w-[90%] sm:max-w-[70%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
                   {msg.sender === 'ai' && (
-                    <div className="shrink-0 w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 mt-1 shadow-lg">
-                      <Bot className="h-4 w-4" />
+                    <div className="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 mt-1 shadow-lg">
+                      <Bot className="h-3.5 w-3.5 sm:h-4 sm:h-4" />
                     </div>
                   )}
                   
-                  <div className={`flex flex-col gap-2 ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
-                    <div className={`p-5 rounded-2xl text-sm md:text-base leading-relaxed shadow-sm ${
+                  <div className={`flex flex-col gap-1.5 sm:gap-2 ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}>
+                    <div className={`p-4 sm:p-5 rounded-2xl text-xs sm:text-base leading-relaxed shadow-sm ${
                       msg.sender === 'user' 
                         ? 'bg-blue-600 text-white rounded-tr-none' 
                         : 'bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-200 rounded-tl-none'
@@ -204,23 +204,23 @@ const AICopilot = () => {
                         {msg.text.split('**').map((chunk, i) => i % 2 === 1 ? <strong key={i} className={msg.sender === 'user' ? 'text-white' : 'text-blue-500 dark:text-white font-black'}>{chunk}</strong> : chunk)}
                       </div>
                       {msg.id === messages[messages.length-1].id && isTyping && msg.sender === 'ai' && (
-                        <span className="inline-block w-1 h-4 bg-blue-500 ml-1 animate-pulse align-middle"></span>
+                        <span className="inline-block w-1 h-3 sm:h-4 bg-blue-500 ml-1 animate-pulse align-middle"></span>
                       )}
                     </div>
                     
                     {/* Render Files in chat */}
                     {msg.files && msg.files.length > 0 && (
-                      <div className={`flex flex-wrap gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                      <div className={`flex flex-wrap gap-1.5 sm:gap-2 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                         {msg.files.map((f, i) => (
-                          <div key={i} className="flex items-center gap-2 p-2 bg-white/10 dark:bg-slate-800/50 rounded-xl border border-white/10 text-[10px] font-bold text-slate-400">
-                             {f.preview ? <img src={f.preview} className="w-6 h-6 rounded object-cover" /> : <File className="h-4 w-4" />}
-                             <span className="truncate max-w-[100px]">{f.name}</span>
+                          <div key={i} className="flex items-center gap-1.5 p-1.5 sm:p-2 bg-white/10 dark:bg-slate-800/50 rounded-xl border border-white/10 text-[9px] sm:text-[10px] font-bold text-slate-400">
+                             {f.preview ? <img src={f.preview} className="w-5 h-5 sm:w-6 sm:h-6 rounded object-cover" /> : <File className="h-3.5 w-3.5 sm:h-4 sm:h-4" />}
+                             <span className="truncate max-w-[80px] sm:max-w-[100px]">{f.name}</span>
                           </div>
                         ))}
                       </div>
                     )}
 
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">
+                    <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">
                       {msg.sender === 'user' ? 'You' : 'AI Copilot'} • {msg.timestamp}
                     </span>
                   </div>
@@ -228,19 +228,19 @@ const AICopilot = () => {
 
                 {msg.card && msg.text.length > 0 && (
                   <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-                    className={`mt-4 p-4 rounded-2xl border flex items-center gap-4 w-fit max-w-[80%] ${
+                    className={`mt-4 p-3 sm:p-4 rounded-2xl border flex items-center gap-3 sm:gap-4 w-fit max-w-[85%] ${
                       msg.card.type === 'alert' ? 'bg-red-500/5 border-red-500/20 text-red-500' :
                       msg.card.type === 'nav' ? 'bg-blue-500/5 border-blue-500/20 text-blue-500' :
                       'bg-emerald-500/5 border-emerald-500/20 text-emerald-500'
                     }`}
                   >
-                    <div className="p-2 bg-white/10 rounded-lg">
-                      {msg.card.type === 'alert' ? <ShieldAlert className="h-5 w-5" /> : 
-                       msg.card.type === 'nav' ? <Navigation className="h-5 w-5" /> : <CheckCircle2 className="h-5 w-5" />}
+                    <div className="p-1.5 sm:p-2 bg-white/10 rounded-lg">
+                      {msg.card.type === 'alert' ? <ShieldAlert className="h-4 w-4 sm:h-5 sm:h-5" /> : 
+                       msg.card.type === 'nav' ? <Navigation className="h-4 w-4 sm:h-5 sm:h-5" /> : <CheckCircle2 className="h-4 w-4 sm:h-5 sm:h-5" />}
                     </div>
                     <div>
-                      <p className="text-[9px] font-black uppercase tracking-widest opacity-60">{msg.card.title}</p>
-                      <p className="text-xs font-black">{msg.card.value}</p>
+                      <p className="text-[8px] sm:text-[9px] font-black uppercase tracking-widest opacity-60">{msg.card.title}</p>
+                      <p className="text-[10px] sm:text-xs font-black">{msg.card.value}</p>
                     </div>
                   </motion.div>
                 )}
@@ -249,17 +249,17 @@ const AICopilot = () => {
 
             {isTyping && messages[messages.length-1].sender === 'user' && (
               <div className="flex flex-col items-start gap-2">
-                <div className="flex gap-3 items-center">
-                  <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 shadow-lg">
-                    <Bot className="h-4 w-4" />
+                <div className="flex gap-2 sm:gap-3 items-center">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400 shadow-lg">
+                    <Bot className="h-3.5 w-3.5 sm:h-4 sm:h-4" />
                   </div>
-                  <div className="px-5 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center gap-2">
+                  <div className="px-4 py-2 sm:px-5 sm:py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center gap-2">
                      <div className="flex gap-1">
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></span>
+                        <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                        <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-500 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                        <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-blue-500 rounded-full animate-bounce"></span>
                      </div>
-                     <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-2">{typingStatus}</span>
+                     <span className="text-[9px] sm:text-[10px] font-black uppercase text-slate-400 tracking-widest ml-1 sm:ml-2">{typingStatus}</span>
                   </div>
                 </div>
               </div>
@@ -268,24 +268,24 @@ const AICopilot = () => {
           </div>
 
           {/* Input Panel */}
-          <div className="p-6 md:p-8 bg-white dark:bg-[#0a0f1c] border-t border-slate-100 dark:border-slate-800 z-10">
-            <div className="max-w-4xl mx-auto space-y-4">
+          <div className="p-4 sm:p-8 bg-white dark:bg-[#0a0f1c] border-t border-slate-100 dark:border-slate-800 z-10">
+            <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4">
               
               {/* Attached Files Bar */}
               <AnimatePresence>
                 {attachedFiles.length > 0 && (
                   <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                    className="flex flex-wrap gap-2 pb-4"
+                    className="flex flex-wrap gap-2 pb-2 sm:pb-4"
                   >
                     {attachedFiles.map((f, i) => (
-                      <div key={i} className="flex items-center gap-3 p-3 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
-                         {f.preview ? <img src={f.preview} className="w-8 h-8 rounded-lg object-cover" /> : <File className="h-5 w-5 text-blue-500" />}
+                      <div key={i} className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-slate-100 dark:bg-slate-800 rounded-xl sm:rounded-2xl border border-slate-200 dark:border-slate-700">
+                         {f.preview ? <img src={f.preview} className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg object-cover" /> : <File className="h-4 w-4 sm:h-5 sm:h-5 text-blue-500" />}
                          <div>
-                            <p className="text-xs font-black text-slate-700 dark:text-white leading-none mb-1">{f.name}</p>
-                            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{f.size}</p>
+                            <p className="text-[10px] sm:text-xs font-black text-slate-700 dark:text-white leading-none mb-1 truncate max-w-[80px] sm:max-w-none">{f.name}</p>
+                            <p className="text-[8px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest">{f.size}</p>
                          </div>
                          <button onClick={() => removeFile(i)} className="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full text-slate-400">
-                           <X className="h-4 w-4" />
+                           <X className="h-3.5 w-3.5" />
                          </button>
                       </div>
                     ))}
@@ -294,24 +294,24 @@ const AICopilot = () => {
               </AnimatePresence>
 
               <form onSubmit={handleSend} className="relative group">
-                <div className="absolute left-5 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-400">
+                <div className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 flex items-center gap-2 text-slate-400">
                    <Paperclip 
                      onClick={() => fileInputRef.current.click()}
-                     className="h-5 w-5 hover:text-blue-500 cursor-pointer transition-colors active:scale-90" 
+                     className="h-4 w-4 sm:h-5 sm:h-5 hover:text-blue-500 cursor-pointer transition-colors active:scale-90" 
                    />
                 </div>
                 <input 
                   type="text" value={input} onChange={(e) => setInput(e.target.value)}
-                  placeholder="Attach disaster logs, photos, or ask Gemini anything..."
-                  className="w-full pl-14 pr-32 py-5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-3xl outline-none focus:border-blue-500 dark:focus:border-blue-600 focus:ring-4 focus:ring-blue-500/5 text-slate-900 dark:text-white font-bold transition-all"
+                  placeholder="Ask Gemini anything..."
+                  className="w-full pl-11 sm:pl-14 pr-24 sm:pr-32 py-4 sm:py-5 bg-slate-50 dark:bg-slate-900/50 border-2 border-slate-100 dark:border-slate-800 rounded-2xl sm:rounded-3xl outline-none focus:border-blue-500 dark:focus:border-blue-600 focus:ring-4 focus:ring-blue-500/5 text-xs sm:text-base text-slate-900 dark:text-white font-bold transition-all"
                 />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-1">
-                  <button type="button" className="p-2.5 text-slate-400 hover:text-blue-500 transition-colors"><Smile className="h-5 w-5" /></button>
-                  <button type="button" onClick={() => setIsRecording(!isRecording)} className={`p-2.5 rounded-xl transition-all ${isRecording ? 'bg-red-500 text-white animate-pulse' : 'text-slate-400 hover:text-blue-500'}`}>
-                     <Mic className="h-5 w-5" />
+                <div className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 flex gap-0.5 sm:gap-1">
+                  <button type="button" className="hidden sm:block p-2.5 text-slate-400 hover:text-blue-500 transition-colors"><Smile className="h-5 w-5" /></button>
+                  <button type="button" onClick={() => setIsRecording(!isRecording)} className={`p-2 sm:p-2.5 rounded-xl transition-all ${isRecording ? 'bg-red-500 text-white animate-pulse' : 'text-slate-400 hover:text-blue-500'}`}>
+                     <Mic className="h-4 w-4 sm:h-5 sm:h-5" />
                   </button>
-                  <button type="submit" className="p-3 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl shadow-lg shadow-blue-500/20 transition-all active:scale-90 ml-1">
-                     <Send className="h-5 w-5" />
+                  <button type="submit" className="p-2 sm:p-3 bg-blue-600 hover:bg-blue-500 text-white rounded-xl sm:rounded-2xl shadow-lg shadow-blue-500/20 transition-all active:scale-90">
+                     <Send className="h-4 w-4 sm:h-5 sm:h-5" />
                   </button>
                 </div>
               </form>

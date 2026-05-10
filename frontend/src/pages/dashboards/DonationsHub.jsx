@@ -390,55 +390,57 @@ const DonationsHub = () => {
         )}
       </AnimatePresence>
 
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-4xl font-black text-slate-900 dark:text-white tracking-tight">Relief Hub</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium text-lg">Support affected communities through funds and critical supplies.</p>
+          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-none">Relief Hub</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-2 font-medium text-sm sm:text-lg">Support affected communities through funds and critical supplies.</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
         
         {/* Financial Relief Fund */}
         <div className="xl:col-span-3">
-          <div className="bg-gradient-to-br from-emerald-600 via-emerald-600 to-teal-700 rounded-[2.5rem] p-10 shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] group-hover:scale-110 transition-transform duration-1000"></div>
+          <div className="bg-gradient-to-br from-emerald-600 via-emerald-600 to-teal-700 rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-48 sm:w-80 h-48 sm:h-80 bg-white/10 rounded-full blur-[60px] sm:blur-[100px] group-hover:scale-110 transition-transform duration-1000"></div>
             
-            <div className="flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-8 sm:gap-12 relative z-10">
               <div className="flex-1 w-full text-white">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/20 rounded-full text-xs font-black tracking-widest uppercase mb-6 backdrop-blur-md">
-                  <DollarSign className="h-4 w-4" /> Official Relief Fund
+                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 bg-white/20 rounded-full text-[8px] sm:text-xs font-black tracking-widest uppercase mb-4 sm:mb-6 backdrop-blur-md">
+                   <DollarSign className="h-3 w-3 sm:h-4 sm:h-4" /> Official Relief Fund
                 </div>
-                <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-4">${fundRaised.toLocaleString()} Raised</h2>
-                <p className="text-emerald-50/80 font-medium text-xl max-w-2xl">Help us reach our ${fundGoal.toLocaleString()} goal to deploy advanced medical tents and field clinics in affected sectors.</p>
+                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tighter mb-2 sm:mb-4 leading-none">
+                  ${fundRaised.toLocaleString()} <span className="text-emerald-300 sm:text-white">Raised</span>
+                </h2>
+                <p className="text-emerald-50/80 font-medium text-sm sm:text-xl max-w-2xl leading-relaxed">Help us reach our ${fundGoal.toLocaleString()} goal to deploy advanced medical tents and clinics.</p>
                 
-                <div className="mt-10">
-                  <div className="flex justify-between items-end mb-3">
-                    <span className="text-sm font-black uppercase tracking-widest text-emerald-100 opacity-80">Campaign Progress</span>
-                    <span className="text-3xl font-black">{fundProgress}%</span>
-                  </div>
-                  <div className="h-5 w-full bg-black/20 rounded-full overflow-hidden shadow-inner p-1">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      animate={{ width: `${fundProgress}%` }}
-                      transition={{ duration: 1.5, ease: "circOut" }}
-                      className="h-full rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.6)]"
-                    ></motion.div>
-                  </div>
+                <div className="mt-6 sm:mt-10">
+                   <div className="flex justify-between items-end mb-2 sm:mb-3">
+                      <span className="text-[8px] sm:text-sm font-black uppercase tracking-widest text-emerald-100 opacity-80">Campaign Progress</span>
+                      <span className="text-xl sm:text-3xl font-black">{fundProgress}%</span>
+                   </div>
+                   <div className="h-4 sm:h-5 w-full bg-black/20 rounded-full overflow-hidden shadow-inner p-1">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: `${fundProgress}%` }}
+                        transition={{ duration: 1.5, ease: "circOut" }}
+                        className="h-full rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.6)]"
+                      ></motion.div>
+                   </div>
                 </div>
               </div>
               
-              <div className="w-full md:w-auto shrink-0 flex flex-col gap-6">
+              <div className="w-full lg:w-auto shrink-0 flex flex-col gap-4 sm:gap-6">
                 <button 
                   onClick={() => setIsPaymentModalOpen(true)}
-                  className="w-full md:w-72 py-5 bg-white text-emerald-700 hover:bg-emerald-50 rounded-[2rem] font-black text-xl transition-all shadow-2xl hover:scale-105 active:scale-95 flex items-center justify-center gap-3"
+                  className="w-full lg:w-72 py-4 sm:py-5 bg-white text-emerald-700 hover:bg-emerald-50 rounded-2xl sm:rounded-[2rem] font-black text-lg sm:text-xl transition-all shadow-2xl hover:scale-105 active:scale-95 flex items-center justify-center gap-3"
                 >
-                  <Zap className="h-6 w-6" /> Donate Funds
+                  <Zap className="h-5 w-5 sm:h-6 sm:h-6" /> Donate Funds
                 </button>
-                <div className="flex flex-col items-center gap-2">
+                <div className="flex items-center justify-center gap-2">
                    <div className="flex items-center gap-2 px-4 py-2 bg-black/10 rounded-full">
-                     <Lock className="h-3 w-3 text-emerald-200" />
-                     <p className="text-emerald-100 text-[10px] font-black uppercase tracking-[0.2em]">Secure Processing</p>
+                      <Lock className="h-3 w-3 text-emerald-200" />
+                      <p className="text-emerald-100 text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em]">Secure Processing</p>
                    </div>
                 </div>
               </div>
@@ -448,30 +450,30 @@ const DonationsHub = () => {
 
         {/* Supply Chain Requests */}
         <div className="xl:col-span-3">
-          <div className="bg-white dark:bg-[#0a0f1c] rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-xl">
-            <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-              <div className="p-2 bg-blue-500 rounded-xl shadow-lg shadow-blue-500/20">
-                <Package className="text-white h-6 w-6" />
+          <div className="bg-white dark:bg-[#0a0f1c] rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-xl">
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-6 sm:mb-8 flex items-center gap-3">
+              <div className="p-2 bg-blue-500 rounded-lg sm:rounded-xl shadow-lg shadow-blue-500/20">
+                <Package className="text-white h-5 w-5 sm:h-6 sm:h-6" />
               </div>
               Urgent Supply Requests
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
               {supplies.map(item => {
                 const Icon = item.icon;
                 const theme = getColorClasses(item.color);
                 const progress = Math.min(100, Math.round((item.pledged / item.needed) * 100));
                 
                 return (
-                  <div key={item.id} className={`p-8 rounded-[2rem] border transition-all duration-500 group relative overflow-hidden ${progress >= 100 ? 'border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-400'}`}>
-                    <div className="flex justify-between items-start mb-8 relative z-10">
-                      <div className="flex items-center gap-5">
-                        <div className={`p-4 rounded-[1.25rem] shadow-inner transition-transform group-hover:rotate-6 ${theme.iconBg} ${theme.text} ${theme.darkText}`}>
-                          <Icon className="h-8 w-8" />
+                  <div key={item.id} className={`p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] border transition-all duration-500 group relative overflow-hidden ${progress >= 100 ? 'border-emerald-500/30 bg-emerald-50/50 dark:bg-emerald-500/5' : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 hover:border-blue-400'}`}>
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-6 sm:mb-8 relative z-10">
+                      <div className="flex items-center gap-4 sm:gap-5">
+                        <div className={`p-3 sm:p-4 rounded-xl sm:rounded-[1.25rem] shadow-inner transition-transform group-hover:rotate-6 ${theme.iconBg} ${theme.text} ${theme.darkText}`}>
+                          <Icon className="h-6 w-6 sm:h-8 sm:h-8" />
                         </div>
                         <div>
-                          <h4 className="text-xl font-black text-slate-900 dark:text-white mb-1">{item.name}</h4>
-                          <span className={`text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full border shadow-sm ${item.urgency === 'Critical' ? 'bg-red-50 text-red-600 border-red-200 dark:bg-red-500/10 dark:text-red-400 dark:border-red-500/20' : 'bg-orange-50 text-orange-600 border-orange-200 dark:bg-orange-500/10 dark:text-orange-400 dark:border-orange-500/20'}`}>
+                          <h4 className="text-lg sm:text-xl font-black text-slate-900 dark:text-white mb-1 leading-tight">{item.name}</h4>
+                          <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-full border shadow-sm ${item.urgency === 'Critical' ? 'bg-red-50 text-red-600 border-red-200 dark:bg-red-500/10 dark:text-red-400 dark:border-red-500/20' : 'bg-orange-50 text-orange-600 border-orange-200 dark:bg-orange-500/10 dark:text-orange-400 dark:border-orange-500/20'}`}>
                             {item.urgency}
                           </span>
                         </div>
@@ -480,30 +482,30 @@ const DonationsHub = () => {
                       {progress < 100 ? (
                         <button 
                           onClick={() => setSelectedItem(item)}
-                          className={`px-6 py-3 ${theme.bg} ${theme.hoverBg} text-white text-sm font-black rounded-2xl transition-all shadow-lg shadow-${item.color}-500/20 hover:scale-105 active:scale-95`}
+                          className={`w-full sm:w-auto px-6 py-3 ${theme.bg} ${theme.hoverBg} text-white text-xs sm:text-sm font-black rounded-xl sm:rounded-2xl transition-all shadow-lg shadow-${item.color}-500/20 hover:scale-105 active:scale-95`}
                         >
                           Pledge
                         </button>
                       ) : (
-                        <div className="px-5 py-3 bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-black rounded-2xl flex items-center gap-2 border border-emerald-500/20 shadow-inner">
+                        <div className="w-full sm:w-auto px-5 py-3 bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm font-black rounded-xl sm:rounded-2xl flex items-center justify-center sm:justify-start gap-2 border border-emerald-500/20 shadow-inner">
                           <CheckCircle2 className="h-4 w-4" /> Goal Met
                         </div>
                       )}
                     </div>
                     
                     <div className="relative z-10">
-                      <div className="flex justify-between items-end mb-3">
-                        <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Inventory Capacity</span>
-                        <span className="text-lg font-black text-slate-900 dark:text-white">{item.pledged} <span className="text-slate-500 font-medium text-sm">/ {item.needed} units</span></span>
-                      </div>
-                      <div className="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          animate={{ width: `${progress}%` }}
-                          transition={{ duration: 1, ease: "circOut" }}
-                          className={`h-full rounded-full ${progress >= 100 ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : theme.bg}`}
-                        ></motion.div>
-                      </div>
+                       <div className="flex justify-between items-end mb-2 sm:mb-3">
+                          <span className="text-[8px] sm:text-[10px] font-black text-slate-400 uppercase tracking-widest">Inventory Capacity</span>
+                          <span className="text-base sm:text-lg font-black text-slate-900 dark:text-white">{item.pledged} <span className="text-slate-500 font-medium text-xs sm:text-sm">/ {item.needed} units</span></span>
+                       </div>
+                       <div className="h-2.5 sm:h-3 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
+                          <motion.div 
+                            initial={{ width: 0 }}
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 1, ease: "circOut" }}
+                            className={`h-full rounded-full ${progress >= 100 ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : theme.bg}`}
+                          ></motion.div>
+                       </div>
                     </div>
                   </div>
                 );
